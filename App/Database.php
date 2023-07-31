@@ -24,13 +24,13 @@ class Database
     /**
      * @return query result
      */
-    public function query($query)
+    public function query($query, $params = [])
     {
         // prepare query
         $statement = $this->connection->prepare($query);
 
         // and execute it
-        $statement->execute();
+        $statement->execute($params);
         return $statement;
     }
 }

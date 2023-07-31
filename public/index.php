@@ -1,20 +1,15 @@
 <?php
-
 require '../function.php';
-require '../router/web.php';
 require '../App/Database.php';
+require '../router/web.php';
 
 
-$config = require('../App/Config.php');
 
-$db = new Database($config['database']);
+// $id = $_GET['id'];
+// // use :id "id" ,is the key of my params, for clean query to sql injection
+// $query = "select * from indicators where id = :id";
+// // pass paramas throught the execute stored in query function
+// $indicators = $db->query($query,['id' => $id])->fetch();
 
- // if i get one el i use fatch and don't fatch all, for can access to array dirrectly
-$indicators = $db->query("select * from indicators")->fetchAll();
 
-
-echo "<ul>";
-foreach ($indicators as $indicator) {
-    echo "<li>" .  $indicator['name'] . "</li>";
-}
-echo "</ul>";
+// dd($indicators);

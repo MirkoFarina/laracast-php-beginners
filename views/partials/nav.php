@@ -13,6 +13,9 @@
                         <a href="/about" class="
                         <?php active('/about') ?>
                         text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">About</a>
+                        <a href="/notes" class="
+                        <?php active('/notes') ?>
+                        text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Notes</a>
                         <a href="/contact" class="
                         <?php active('/contact') ?>
                         text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Contact </a>
