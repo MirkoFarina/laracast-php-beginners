@@ -1,9 +1,9 @@
 <?php
-require('partials/head.php');
-require('partials/nav.php');
+require __DIR__ . '/../partials/head.php';
+require __DIR__ . '/../partials/nav.php';
 ?>
 
-<?php require('partials/header.php') ?>
+<?php require __DIR__ . '/../partials/header.php' ?>
 <main>
 	<div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
 		<div class="mb-4">
@@ -37,4 +37,4 @@ require('partials/nav.php');
 
 </main>
 
-<?= require('partials/footer.php'); ?>
+<?= require __DIR__ . '/../partials/footer.php'; ?>
