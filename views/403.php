@@ -4,13 +4,12 @@ require('partials/nav.php');
 ?>
 
 <?php require('partials/header.php') ?>
+
 <main>
   <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-    <a href="/notes" class="text-blue-500 hover:undeerline" >
-      Go back
-    </a>
-     <p> <?= htmlspecialchars( $note['body'])?> </p>
+    <h1 class="text-red-400 text-center">
+        Error 403. Unauthorized action.
+    </h1>
   </div>
 </main>
-
 <?= require('partials/footer.php'); ?>

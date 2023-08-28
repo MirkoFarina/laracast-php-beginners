@@ -31,10 +31,20 @@ function routeToController($uri,$routes) {
 /**
  * function for get error response
  */
-function abort($code = 404) {
+function abort($code = Response::NOT_FOUND) {
     http_response_code($code);
-    $heading = 'Error 404';
-    require 'views/404.php';
+    $heading = "Error $code";
+    require "views/$code.php";
 
     die();
+}
+
+/**
+ * if the field is different from value get error
+ * @param $status is default on 403 error
+ */
+function authorize($condition, $status = Response::FORBIDDEN) {
+    if (! $condition) {
+        abort($status);
+    }
 }

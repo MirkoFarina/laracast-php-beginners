@@ -1,0 +1,1 @@
+> use function htmlspecialchars() for sanitification the string before print it .

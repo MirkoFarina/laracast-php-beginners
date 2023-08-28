@@ -9,10 +9,14 @@ require('partials/nav.php');
     <?php foreach ($notes as   $note) : ?>
       <li>
         <a href="/note?id=<?=$note['id']?>" class="text-blue-500 hover:underline">
-          <?= $note['body'] ?>
+          <?= htmlspecialchars($note['body'])?>
         </a>
       </li>
     <?php endforeach; ?>
+
+    <div class="mt-6">
+      <a class="text-blue-500 hover:underline" href="/note/create">Create new Note</a>
+    </div>
   </div>
 </main>
 
