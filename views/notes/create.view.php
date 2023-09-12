@@ -13,7 +13,7 @@ require base_path( 'views/partials/nav.php');
 				</p>
 			<?php endif; ?>
 		</div>
-		<form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" method="POST">
+		<form action="/notes" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" method="POST">
 			<div>
 				<label class="block text-gray-700 text-sm font-bold mb-2" for="body">Body message</label>
 				<textarea placeholder="insert note .." class="block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="body" name="body"><?= $_POST['body'] ?? ''  ?></textarea>
