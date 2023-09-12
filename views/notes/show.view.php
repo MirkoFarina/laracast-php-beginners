@@ -9,7 +9,9 @@ require base_path('views/partials/nav.php');;
 		<a href="/notes" class="text-blue-500 hover:undeerline">
 			Go back
 		</a>
-		<p> <?= htmlspecialchars($note['body']) ?> </p>
+		<p class="mb-4"> <?= htmlspecialchars($note['body']) ?> </p>
+
+		<a href="/note/edit?id=<?= $note['id'] ?>" class="text-yellow-500 border border-current px-3 py-1 rounded">Edit</a>
 		<form action="" method="POST" class="mt-6">
 			<input type="hidden" name="_method" value="DELETE">
 			<input type="hidden" name="id" value="<?= $note['id']  ?>">

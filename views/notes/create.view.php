@@ -6,13 +6,6 @@ require base_path( 'views/partials/nav.php');
 <?php require base_path('views/partials/header.php'); ?>
 <main>
 	<div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-		<div class="mb-4">
-			<?php if (isset($success)) : ?>
-				<p class="text-green-500 text-md mt-2">
-					<?= $success ?>
-				</p>
-			<?php endif; ?>
-		</div>
 		<form action="/notes" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" method="POST">
 			<div>
 				<label class="block text-gray-700 text-sm font-bold mb-2" for="body">Body message</label>

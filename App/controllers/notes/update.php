@@ -4,7 +4,16 @@ use Core\App;
 use Core\Validator;
 use Core\Database;
 
+
 $db = App::resolve(Database::class);
+
+$currentUserId = 1;
+$note = $db->query(
+    'Select * from notes where id = :id',
+    ['id' => $_POST['id']]
+)->findOrFail();
+
+authorize($note['user_id'] === $currentUserId);
 $errors = [];
 
 // validation element
@@ -19,17 +28,19 @@ if (Validator::min($_POST['body'], 3)) {
 }
 
 if (count($errors)) {
-    return view('/notes/create.view.php', [
+    return view('/notes/edit.view.php', [
         'heading' =>  'Create Note',
         'message' => 'This is the page of notes',
+        'note' => $note,
         'errors' => $errors
     ]);
 }
 
-$db->query('INSERT INTO notes(body,user_id) VALUES(:body, :user_id)', [
-    'body' => $_POST['body'],
-    'user_id' => 1
+$db->query('update notes set body = :body where id = :id',[
+    'id' => $_POST['id'],
+    'body' => $_POST['body']
 ]);
+
 
 header('location: /notes');
 die();
