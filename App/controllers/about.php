@@ -1,7 +1,5 @@
 <?php 
-
-$heading = 'About';
-$message = 'This is the page about me';
-
-
-require '../views/about.view.php';
+view("about.view.php", [
+    "heading" => 'About',
+    'message' => 'this is the page about me'
+]);

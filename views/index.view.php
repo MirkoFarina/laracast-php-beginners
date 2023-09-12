@@ -1,6 +1,6 @@
 <?php
-require('partials/head.php');
-require('partials/nav.php');
+require base_path('views/partials/head.php');
+require base_path('views/partials/nav.php');
 ?>
 
 <?php require('partials/header.php') ?>
@@ -10,4 +10,4 @@ require('partials/nav.php');
     <?php echo $message ?>
   </div>
 </main>
-<?= require('partials/footer.php'); ?>
+<?= require base_path('views/partials/footer.php'); ?>

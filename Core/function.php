@@ -1,5 +1,7 @@
 <?php
 
+use Core\Response;
+
 function dd($el)
 {
     echo "<pre>";
@@ -22,7 +24,7 @@ function active($value) {
 function routeToController($uri,$routes) {
     // if uri exist return controller, exctracted from routes
     if(array_key_exists($uri,$routes)) {
-        require $routes[$uri];
+        require base_path($routes[$uri]);
     } else {
         abort(404);
     }
@@ -34,7 +36,7 @@ function routeToController($uri,$routes) {
 function abort($code = Response::NOT_FOUND) {
     http_response_code($code);
     $heading = "Error $code";
-    require "views/$code.php";
+    require base_path("views/$code.php");
 
     die();
 }
@@ -47,4 +49,15 @@ function authorize($condition, $status = Response::FORBIDDEN) {
     if (! $condition) {
         abort($status);
     }
+}
+
+
+function base_path($path)
+{
+    return BASE_PATH . $path;
+}
+function view(string $path, array $attributes = [])
+{
+    extract($attributes);
+    require base_path('views/' . $path);
 }

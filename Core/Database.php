@@ -1,4 +1,8 @@
 <?php
+
+namespace Core;
+
+use PDO;
 /**
  * Connect to db and execute query
  * @var $db_connection pass the path to pdo instance
@@ -19,7 +23,7 @@ class Database
         // pdo is class from php for dsn to db
         $this->connection = new PDO($dsn,$username,$password,
         [
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+            \PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
         ]);
     }
 

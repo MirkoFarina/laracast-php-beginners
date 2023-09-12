@@ -1,10 +1,12 @@
 <?php
 
-require('../App/Validator.php');
-$config = require('../App/Config.php');
+use Core\Database;
+use Core\Validator;
+
+require base_path('App/Validator.php');
+$config = require base_path('App/Config.php');
 $db = new Database($config['database']);
 
-$heading = 'Create Note';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $errors = [];
@@ -12,11 +14,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // validation element
     if (Validator::required($_POST['body'])) {
         $errors['body'] = 'A body is required';
-    } 
-    if(Validator::max($_POST['body'], 1000)) {
+    }
+    if (Validator::max($_POST['body'], 1000)) {
         $errors['body'] = 'A body can have maximum 1000 characaters';
     }
-    if(Validator::min($_POST['body'], 3)) {
+    if (Validator::min($_POST['body'], 3)) {
         $errors['body'] = 'A body can have min 3 characaters';
     }
 
@@ -30,4 +32,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-require '../views/notes/create.view.php';
+
+view('/notes/create.view.php', [
+    'heading' =>  'Create Note',
+    'message' => 'This is the page of notes',
+    'errors' => $errors ?? null
+]);
