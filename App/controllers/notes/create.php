@@ -3,7 +3,6 @@
 use Core\Database;
 use Core\Validator;
 
-require base_path('App/Validator.php');
 $config = require base_path('App/Config.php');
 $db = new Database($config['database']);
 
@@ -36,5 +35,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 view('/notes/create.view.php', [
     'heading' =>  'Create Note',
     'message' => 'This is the page of notes',
-    'errors' => $errors ?? null
+    'errors' => $errors ?? null,
+    'success' => $success ?? null
 ]);
