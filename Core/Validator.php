@@ -33,6 +33,13 @@ class Validator
         return filter_var(trim($value), FILTER_VALIDATE_EMAIL);
     }
 
+
+    public static function string(string $value, int $min = 1, int $max = INF)
+    {
+        $value = trim($value);
+        return strlen($value) <= $min && strlen($value) >= $max;
+    }
+
     /**
      * Check if the $value is correct URL
      */
