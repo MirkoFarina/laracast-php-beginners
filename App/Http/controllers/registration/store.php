@@ -32,7 +32,7 @@ $user_exist = $db->query('select * from users where email = :email', [
 
 
 if ($user_exist) {
-    header('location: /');
+    redirect('/');
 }
 
 $db->query('INSERT INTO users(email, password) VALUES(:email,:password)', [
@@ -42,5 +42,6 @@ $db->query('INSERT INTO users(email, password) VALUES(:email,:password)', [
 
 login($user_exist);
 
-header('location: /');
+redirect('/');
+
 die();

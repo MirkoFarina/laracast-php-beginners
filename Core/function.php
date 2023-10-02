@@ -55,23 +55,15 @@ function base_path($path)
 {
     return BASE_PATH . $path;
 }
-function view(string $path, array $attributes = [])
+function view(string $path, array $attributes = []): void
 {
     extract($attributes);
     require base_path('views/' . $path);
 }
 
-function login($user)
+function redirect($url)
 {
-    $_SESSION['user'] = $user;
+    header("location: ${url}");
 
-    session_regenerate_id(true);
-}
-
-function logout()
-{
-    $_SESSION = [];
-    session_destroy();
-    $params = session_get_cookie_params();
-    setcookie('HTTPSESSION', '', time() - 3600, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
+    exit();
 }
