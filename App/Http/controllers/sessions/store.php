@@ -2,24 +2,13 @@
 
 use Core\Authenticator;
 use App\Http\Forms\LoginForm;
-use Core\Session;
 
-$form = new LoginForm();
+
 $auth = new Authenticator();
+$form = LoginForm::validate($attributes = ['email' => $_POST['email'], 'password' => $_POST['password']]);
 
-if ($form->validate($_POST['email'], $_POST['password'])) {
+$singedIn = (new Authenticator())->attempt($attributes['email'], $attributes['password']);
+if (!$singedIn) $form->error('email', 'No matching found whit this values, try again')->throw();
 
-    if ($auth->attempt($_POST['email'], $_POST['password'])) {
-        redirect('/');
-    };
-
-    $form->error('email','Email o password errati, riprova');
-};
-
-Session::flash('errors',$form->errors());
-Session::flash('old_attributes', [
-    'email' => $_POST['email'],
-    'password' => $_POST['password']
-]);
-return redirect('/login');
+redirect('/');
 
