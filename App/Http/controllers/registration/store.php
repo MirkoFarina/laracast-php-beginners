@@ -20,7 +20,7 @@ if (Validator::string($_POST['password'], 7, 255)) {
 
 if (count($errors)) {
     return view('/registration/create.view.php', [
-        'heading' =>  'Create Note',
+        'heading' => 'Create Note',
         'message' => 'This is the page of notes',
         'errors' => $errors
     ]);
@@ -37,10 +37,10 @@ if ($user_exist) {
 
 $db->query('INSERT INTO users(email, password) VALUES(:email,:password)', [
     'email' => $_POST['email'],
-    'password' => $_POST['password'],
+    'password' => password_hash($_POST['password'], PASSWORD_BCRYPT),
 ]);
-$_SESSION['user'] = [
-    'email' => $_POST['email']
-];
+
+login($user_exist);
+
 header('location: /');
 die();
