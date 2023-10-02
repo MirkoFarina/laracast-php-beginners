@@ -1,6 +1,7 @@
 <?php
 
 use Core\Response;
+use Core\Session;
 
 function dd($el)
 {
@@ -66,4 +67,9 @@ function redirect($url)
     header("location: ${url}");
 
     exit();
+}
+
+function old($key, $default = '')
+{
+    return Session::get('old_attributes')[$key] ?? $default;
 }
