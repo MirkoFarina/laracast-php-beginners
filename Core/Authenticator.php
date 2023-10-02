@@ -13,10 +13,7 @@ class Authenticator
 
     public function logout()
     {
-        $_SESSION = [];
-        session_destroy();
-        $params = session_get_cookie_params();
-        setcookie('HTTPSESSION', '', time() - 3600, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
+        Session::destroy();
     }
     public function attempt($email, $password): bool
     {

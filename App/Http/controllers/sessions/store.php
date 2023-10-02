@@ -2,6 +2,7 @@
 
 use Core\Authenticator;
 use App\Http\Forms\LoginForm;
+use Core\Session;
 
 $form = new LoginForm();
 $auth = new Authenticator();
@@ -15,6 +16,7 @@ if ($form->validate($_POST['email'], $_POST['password'])) {
     $form->error('email','Email o password errati, riprova');
 };
 
-return view('/sessions/create.view.php', [
-    'errors' => $form->errors()
-]);
+Session::flash('errors',$form->errors());
+
+return redirect('/login');
+

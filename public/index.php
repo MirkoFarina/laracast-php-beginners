@@ -1,5 +1,6 @@
 <?php
 use Core\Router;
+use Core\Session;
 
 session_start();
 
@@ -20,5 +21,8 @@ $router = new Router();
 $routes = require base_path('router/web.php');
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'] ;
 $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
+
 $router->route($uri, $method);
 
+// reset flash message after change page one times after redirect
+Session::unflash();
